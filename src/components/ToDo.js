@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteToDo } from "../store";
 
 const ToDo = ({ text, id }) => {
@@ -8,7 +9,9 @@ const ToDo = ({ text, id }) => {
 
   return (
     <li>
-      {text} <button onClick={onClickDelete}>❌</button>
+      <Link to={`/${id}`}>
+        {text} <button onClick={onClickDelete}>❌</button>
+      </Link>
     </li>
   );
 };
