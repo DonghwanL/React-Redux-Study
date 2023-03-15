@@ -8,7 +8,7 @@ const Detail = () => {
 
   return (
     <>
-      <h1>{toDoDetail.text}</h1>
+      <h1>{toDoDetail?.text}</h1>
       <h5>Created at: {toDoDetail?.id}</h5>
     </>
   );
