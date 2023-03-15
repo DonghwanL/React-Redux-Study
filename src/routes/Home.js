@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToDo } from "../store";
+import ToDo from "../components/ToDo";
 
 const Home = () => {
   const [text, setText] = useState("");
+  const toDos = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     setText(e.target.value);
@@ -9,6 +14,7 @@ const Home = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(addToDo(text));
     setText("");
   };
 
@@ -19,7 +25,11 @@ const Home = () => {
         <input type="text" value={text} onChange={onChange} />
         <button>Add</button>
       </form>
-      <ul></ul>
+      <ul>
+        {toDos.map((toDo) => (
+          <ToDo {...toDo} key={toDo.id} />
+        ))}
+      </ul>
     </>
   );
 };
